@@ -1,5 +1,20 @@
 namespace HVCPU;
 
+
+/*
+    If I could get this to work... It would
+    quite honestly be the darkest bit of magic
+    I would ever have seen created. But C# loves
+    hiding pointers in managed code... and the
+    GC hates everyone soooo...
+    
+    Current issue is that this causes a stack overflow
+    error. I'm not quite sure why... and I don't see
+    any reason to continue with this until I can figure
+    out how to fix this.
+*/
+
+
 public class Pointer<T>
 {
     public ref T value 
@@ -8,6 +23,8 @@ public class Pointer<T>
             return ref value;
         }
     }
+
+    public Pointer() { }
 
     public Pointer(ref T val)
     {
