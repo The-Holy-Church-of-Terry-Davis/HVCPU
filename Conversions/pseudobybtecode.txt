@@ -1,0 +1,10 @@
+.Main | 1, string, args
+    system, 1, "Hello World!"
+    
+    ; here is another way to accomplish this effect
+
+    mov, #1, "Hello World!"
+    system, 1, #1
+
+    ; defining variables
+    var, 1, string, val, "Hello World!"
