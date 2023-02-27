@@ -7,7 +7,7 @@ public class Long : Tp
 
     public Long(ref long val)
     {
-        Value = new Pointer<long>(ref val);
+        Value = new Pointer<long>(val);
 
         mem = new Block<long>(Value);
     }

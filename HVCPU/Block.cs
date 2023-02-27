@@ -3,38 +3,34 @@ namespace HVCPU;
 //Represents a section of memory that has been allocated by the Runtime/CPU
 public class Block<T>
 {
-    protected Pointer<T>[] mem { get; set; } = new Pointer<T>[1];
-    public int Length { get; set; } = 1;
+    protected T[] mem { get; set; } = new T[1];
+    public int Length { get => mem.Length; private set {
+        Length = value;
+    } }
 
     public T this[int i]
     {
-        get => mem[i].value;
-        set => mem[i].value = value;
+        get => mem[i];
+        set => mem[i] = value;
     }
 
     public Block(int size)
     {
-        mem = new Pointer<T>[size];
+        mem = new T[size];
         Length = size;
     }
 
     public Block(Pointer<T> ptr)
     {
-        mem = new Pointer<T>[] { ptr };
+        mem[1] = ptr.value;
         Length = 1;
-    }
-
-    public Block(Pointer<T>[] pointers)
-    {
-        mem = pointers;
-        Length = pointers.Length;
     }
 
     public void Extend(int size)
     {
         Length += size;
 
-        Pointer<T>[]? newmem = new Pointer<T>[Length + size];
+        T[]? newmem = new T[Length + size];
 
         for(int i = 0; i < Length; i++)
         {
@@ -47,7 +43,7 @@ public class Block<T>
     public Block<T> Slice(int index)
     {
         Block<T> ret = new Block<T>(Length - index);
-        Pointer<T>[]? vals = new Pointer<T>[Length - index];
+        T[]? vals = new T[Length - index];
 
         for(int i = index; i < Length; i++)
         {
@@ -59,28 +55,8 @@ public class Block<T>
         return ret;
     }
 
-    public T GetIndex(int index)
-    {
-        return mem[index].value;
-    }
-
-    public void SetIndex(Pointer<T> val, int index)
-    {
-        mem[index] = val;
-    }
-
-    public void SetIndex(int index, Pointer<T> val)
-    {
-        mem[index] = val;
-    }
-
     public Pointer<T> GetPtr(int index)
     {
-        return mem[index];
+        return new Pointer<T>(mem[index]);
     }
-}
-
-public ref struct StackBlock<T>
-{
-
 }

@@ -70,7 +70,7 @@ public class List<T>
 
         for(int i = 0; i < Length; i++)
         {
-            blk.SetIndex(i, new Pointer<T>(ref Values[i]));
+            blk[i] = Values[i];
         }
 
         return blk;

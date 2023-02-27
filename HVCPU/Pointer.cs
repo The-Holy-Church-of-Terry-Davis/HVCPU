@@ -1,3 +1,5 @@
+using HVCPU.EngineTypes;
+
 namespace HVCPU;
 
 
@@ -17,16 +19,9 @@ namespace HVCPU;
 
 public class Pointer<T>
 {
-    public ref T value 
-    {
-        get {
-            return ref value;
-        }
-    }
+    public T value;
 
-    public Pointer() { }
-
-    public Pointer(ref T val)
+    public Pointer(T val)
     {
         value = val;
     }

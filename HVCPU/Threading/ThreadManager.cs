@@ -19,7 +19,7 @@ public class ThreadManager
 
         Threads.Add(t);
 
-        return new Pointer<Thread>(ref t);
+        return new Pointer<Thread>(t);
     }
 
     public int GetNextId()

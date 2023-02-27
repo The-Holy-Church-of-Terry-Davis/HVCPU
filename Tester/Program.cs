@@ -7,12 +7,11 @@ public class Program
     public static void Main()
     {
         byte bt = 0xA;
+        Pointer<byte> newVar = new Pointer<byte>(bt);
 
-        Pointer<byte> ptr = new Pointer<byte>(ref bt);
+        SetPtrBt(0xB, newVar);
 
-        SetPtrBt(0xB, ptr);
-
-        Console.WriteLine((int)bt);
+        Console.WriteLine(newVar.value);
     }
 
     public static void SetPtrBt(byte newval, Pointer<byte> ptr)

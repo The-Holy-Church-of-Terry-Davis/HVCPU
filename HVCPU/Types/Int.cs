@@ -5,9 +5,9 @@ public class Int : Tp
     public Pointer<int> Value { get; set; }
     public new Block<int> mem { get; set; }
 
-    public Int(ref int val)
+    public Int(int val)
     {
-        Value = new Pointer<int>(ref val);
+        Value = new Pointer<int>(val);
 
         mem = new Block<int>(Value);
     }

@@ -5,9 +5,9 @@ public class Chr : Tp
     public Pointer<char> ptr { get; set; }
     public new Block<char> mem { get; set; }
 
-    public Chr(ref char val)
+    public Chr(char val)
     {
-        ptr = new Pointer<char>(ref val);
+        ptr = new Pointer<char>(val);
         mem = new Block<char>(ptr);
     }
 

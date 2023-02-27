@@ -14,7 +14,7 @@ public class Vector<T> : Tp
         }
 
         set {
-            vals[index] = new Pointer<T>(ref value);
+            vals[index] = new Pointer<T>(value);
         }
     }
 }

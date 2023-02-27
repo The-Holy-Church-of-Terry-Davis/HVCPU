@@ -9,7 +9,7 @@ public class Str : Vector<Chr>
     {
         get {
             char c = vals.value[index];
-            return new Chr(ref c);
+            return new Chr(c);
         }
 
         set {
@@ -32,7 +32,7 @@ public class Str : Vector<Chr>
 
     public Str(ref string s)
     {
-        vals = new Pointer<string>(ref s);
+        vals = new Pointer<string>(s);
         mem = new Block<string>(1);
         mem[0] = s;
     }

@@ -13,7 +13,7 @@ public class BytecodeReader
 
     public Instruction ReadNextInstruction()
     {
-        switch(bytes.GetIndex(pos))
+        switch(bytes[pos])
         {
             case 0xA1:
             {

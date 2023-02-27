@@ -2,36 +2,33 @@ namespace HVCPU;
 
 public unsafe class UnsafePtr
 {
-    public ref byte bt { get => ref bt; }
+    public byte value;
 
-    public ref byte this[int index]
+    public UnsafePtr(byte val)
     {
-        get {
-            fixed(byte *var = &bt)
-            {
-                return ref var[index];
-            }
-        }
+        value = val;
     }
 
-    public UnsafePtr(ref byte val)
+    public byte Dereference()
     {
-        bt = val;
+        return value;
     }
 
-    public Block<byte> AsBlock(ref byte firstval, int size)
+    public void Set(byte val)
     {
-        Block<byte> ret = new Block<byte>(size);
-        ret.SetIndex(0, new Pointer<byte>(ref firstval));
-
-        fixed(byte *ptr = &firstval)
-        {
-            for(int i = 1; i < size; i++)
-            {
-                ret.SetIndex(i, new Pointer<byte>(ref ptr[i]));
-            }
-        }
-
-        return ret;
+        value = val;
     }
+
+    public override bool Equals(object? obj)
+    {
+        return base.Equals(obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public static bool operator ==(UnsafePtr value1, UnsafePtr value2) => value1.Equals(value2.Dereference());
+    public static bool operator !=(UnsafePtr value1, UnsafePtr value2) => !value1.Equals(value2.Dereference());
 }
