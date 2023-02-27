@@ -1,6 +1,6 @@
 namespace HVCPU.VirtualHardware.Types;
 
-public record Register(Memory<byte> cache);
+public record Register(Block<byte> cache, RegisterType tp);
 
 public enum RegisterType
 {
